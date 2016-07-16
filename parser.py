@@ -1,4 +1,9 @@
+MSG_LEFTOVER = ""
+
 class Parser(object):
+
+    def __init__(self, book):
+        self.book = book
 
     def parseMsg(self, msg):
         global MSG_LEFTOVER
@@ -39,6 +44,10 @@ class Parser(object):
             else:
                 sellList.append(self.parseTransaction(args[0]))
             args = args[1::]
+
+        self.book._update(symbol, buyList=buyList, sellList=sellList)
+
+        return self.book.book
 
     def tradeParse(self, args):
         # SYMBOL PRICE SIZE

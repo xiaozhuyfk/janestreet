@@ -25,6 +25,8 @@ import socket
 import time
 from threading import Thread
 
+import analyzer, book, parser
+
 __author__ = "Kai Kang, Hongyu Li, Shaojie Bai"
 
 """ Initialization Section """
@@ -34,11 +36,13 @@ TCP_PORT = 20000
 BUFFER_SIZE = 1024
 MESSAGE = "HELLO CANNON"
 INFO = []
-MSG_LEFTOVER = ""
 
 TCP_SOCK = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-PARSER = Parser()
+
+BOOK = book.Book()
+PARSER = parser.Parser(BOOK)
+ANALYZER = analyzer.Analyser(BOOK)
 
 """ Initialization Section Ends """
 
