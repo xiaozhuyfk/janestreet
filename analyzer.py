@@ -1,0 +1,2 @@
+class Analyser(object):
+    pass
